@@ -1,7 +1,34 @@
-<h1>Tombola</h1>
-<ul>
-  <li *ngFor="let item of tombolaItems">
-    <span class="badge">{{item.id}}</span> {{item.title}}<br/>
-    <img src="assets/Bilder/{{item.image}}.JPG">
-  </li>
-</ul>
+
+<div class="wrapper">
+  <h1>Tombola</h1>
+
+
+  <label>Los-Nummer eingeben: <input autofocus #box (keyup.enter)="onEnter(box.value); box.value = ''"></label>
+  <h2 *ngIf="notFound">Los-Nummer nicht gefunden!</h2>
+
+  <ul *ngIf="!notFound">
+    <li *ngFor="let item of tombolaItems">
+      <table>
+        <tr>
+          <td colspan="2">
+      <img src="assets/Bilder/{{item.image}}.JPG"><br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Los:
+    </td>
+    <td>{{item.id}}</td>
+  </tr>
+  <tr>
+    <td>
+      Titel:
+    </td>
+    <td>
+      {{item.title}}
+    </td>
+  </tr>
+    </table>
+    </li>
+  </ul>
+</div>

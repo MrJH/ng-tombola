@@ -12,7 +12,7 @@ export class TombolaService {
 
   constructor(private http:Http) { }
 
-  getTombolaItems(): Promise<TombolaItem[]> {
+  public getTombolaItems(): Promise<TombolaItem[]> {
     return this.http.get(this.tombolaUrl)
              .toPromise()
              .then(response => {
@@ -23,12 +23,18 @@ export class TombolaService {
              .catch(this.handleError);
 }
 
-// findInTombolaItems(id): Promise<TombolaItem> {
-//   return this.getTombolaItems()
-//     .then(tombolaItems: TombolaItem[] => {
-//       tombolaItems.filter(tombolaItem: TombolaItem => tombolaItem.id === id)
-//     });
-//   }
+public findInTombolaItems(id): Promise<TombolaItem> {
+  // console.log('findInTombolaItems 1', id);
+  return this.getTombolaItems()
+    .then((tombolaItems) => {
+      // console.log('findInTombolaItems 2', id);
+      return tombolaItems.filter((tombolaItem: TombolaItem) => {
+        // console.log('findInTombolaItems 3', id, tombolaItem);
+        return tombolaItem.id === parseInt(id);
+      })[0];
+    })
+    // .catch(this.handleError);
+};
 
 private handleError(error: any): Promise<any> {
   console.error('An error occurred', error); // for demo purposes only

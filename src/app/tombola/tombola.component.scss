@@ -1,0 +1,39 @@
+:host, :host input {
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+:host {
+  font-weight: bold;
+}
+
+:host input {
+  padding: 4px 15px 3px;
+  // border-radius: 3px;
+}
+
+h2 {
+  color: red;
+}
+
+ul {
+  list-style: none;
+}
+li {
+  border-top: 2px solid black;
+}
+li:first-child {
+  border-top: none;
+}
+table {
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+}
+tr td:first-child {
+  width: 70px;
+}
+img {
+  padding: 20px 0;
+  width: 300px;
+}
