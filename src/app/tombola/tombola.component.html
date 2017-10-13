@@ -4,31 +4,32 @@
 
 
   <label>Los-Nummer eingeben: <input autofocus #box (keyup.enter)="onEnter(box.value); box.value = ''"></label>
-  <h2 *ngIf="notFound">Los-Nummer nicht gefunden!</h2>
+  
+  <h2 *ngIf="notFound">Los-Nummer {{notFound}} nicht gefunden!</h2>
 
-  <ul *ngIf="!notFound">
+  <ul>
     <li *ngFor="let item of tombolaItems">
       <table>
         <tr>
           <td colspan="2">
-      <img src="assets/Bilder/{{item.image}}.JPG"><br/>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Los:
-    </td>
-    <td>{{item.id}}</td>
-  </tr>
-  <tr>
-    <td>
-      Titel:
-    </td>
-    <td>
-      {{item.title}}
-    </td>
-  </tr>
-    </table>
+            <img src="assets/Bilder/{{item.image}}.JPG"><br/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Los:
+          </td>
+          <td>{{item.id}}</td>
+        </tr>
+        <tr>
+          <td>
+            Titel:
+          </td>
+          <td>
+            {{item.title}}
+          </td>
+        </tr>
+      </table>
     </li>
   </ul>
 </div>

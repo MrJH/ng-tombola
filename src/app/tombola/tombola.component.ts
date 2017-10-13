@@ -11,7 +11,7 @@ export class TombolaComponent implements OnInit {
 
   public tombolaItems: TombolaItem[] = [];
 
-  public notFound = false;
+  public notFound = '';
 
   constructor(private tombolaService: TombolaService) { }
 
@@ -20,22 +20,47 @@ export class TombolaComponent implements OnInit {
   }
 
   public onEnter(id: string) {
-    this.getTombolaItemById(id);
+    this.addToCurrentTombolaItems(id);
     id = '';
+  }
+
+  public reload() {
+    this.tombolaItems = [];
+    this.notFound = '';
+  }
+
+  public addToCurrentTombolaItems(id: string){
+    console.log('id', id);
+    this.notFound = '';
+
+    this.tombolaService.findInTombolaItems(id)
+      .then((item: TombolaItem) => {
+        if(!item) {
+          this.notFound = id;
+        } else {
+          if (this.tombolaItems.length > 9){
+            this.tombolaItems.pop();
+          }
+          this.tombolaItems = [item,...this.tombolaItems];
+        }
+      }).catch(() => {
+        console.log("not found!");
+        this.notFound = id;
+      });
   }
 
   public getTombolaItemById(id: string) {
     console.log('id', id);
-    this.notFound = false;
+    this.notFound = '';
     this.tombolaService.findInTombolaItems(id)
       .then((item: TombolaItem) => {
         if(!item) {
-          this.notFound = true;
+          this.notFound = id;
         }
         this.tombolaItems = [item];
       }).catch(() => {
         console.log("not found!");
-        this.notFound = true;
+        this.notFound = id;
       });
   }
 
