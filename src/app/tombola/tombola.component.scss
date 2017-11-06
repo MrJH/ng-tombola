@@ -39,6 +39,13 @@ li {
   padding: 10px;
   background: white;
   border-radius: 6px;
+  div {
+    font-size: 14px;
+    color: gray;
+    span.white {
+      color: white;
+    }
+  }
 }
 img {
   padding: 10px;

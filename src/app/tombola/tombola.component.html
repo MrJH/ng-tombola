@@ -11,6 +11,10 @@
     <li *ngFor="let item of tombolaItems">
       <h3>{{item.id}}: {{item.title}}</h3>
       <img src="assets/Bilder/{{item.image}}.JPG">
+      <div>
+        <span *ngIf="item.showed.length > 1">Ausgegeben: {{item.showed[0] | date:'short'}}</span>
+        <span *ngIf="item.showed.length === 1">Noch da</span>
+      </div>
     </li>
   </ul>
 </div>
