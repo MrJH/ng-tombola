@@ -14,7 +14,8 @@ export class TombolaComponent implements OnInit {
   public tombolaItems: TombolaItem[] = [];
 
   public notFound = '';
-
+  public macItemCount = 20;
+  
   constructor(
     private tombolaService: TombolaService,
     protected localStorage: AsyncLocalStorage
@@ -63,7 +64,7 @@ export class TombolaComponent implements OnInit {
   }
 
   private addToItems(item: TombolaItem) {
-    if (this.tombolaItems.length > 9){
+    if (this.tombolaItems.length > this.maxItemCount){
       this.tombolaItems.pop();
     }
     this.tombolaItems = [item,...this.tombolaItems];
