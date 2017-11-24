@@ -14,8 +14,8 @@ export class TombolaComponent implements OnInit {
   public tombolaItems: TombolaItem[] = [];
 
   public notFound = '';
-  public macItemCount = 20;
-  
+  public maxItemCount = 20;
+
   constructor(
     private tombolaService: TombolaService,
     protected localStorage: AsyncLocalStorage
