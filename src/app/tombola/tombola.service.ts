@@ -8,12 +8,14 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TombolaService {
 
-  private tombolaUrl = 'assets/Tombola2013-Samstag.json';
+  private tombolaUrl(yearAndDay: string) {
+    return 'assets/Tombola' + yearAndDay + '.json';
+  }
 
   constructor(private http:Http) { }
 
-  public getTombolaItems(): Promise<TombolaItem[]> {
-    return this.http.get(this.tombolaUrl)
+  public getTombolaItems(yearAndDay: string): Promise<TombolaItem[]> {
+    return this.http.get(this.tombolaUrl(yearAndDay))
              .toPromise()
              .then(response => {
                const data = response.json();
@@ -23,9 +25,9 @@ export class TombolaService {
              .catch(this.handleError);
 }
 
-public findInTombolaItems(id): Promise<TombolaItem> {
+public findInTombolaItems(id, yearAndDay): Promise<TombolaItem> {
   // console.log('findInTombolaItems 1', id);
-  return this.getTombolaItems()
+  return this.getTombolaItems(yearAndDay)
     .then((tombolaItems) => {
       // console.log('findInTombolaItems 2', id);
       return tombolaItems.filter((tombolaItem: TombolaItem) => {

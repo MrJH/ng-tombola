@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-  <h1>Tombola</h1>
+  <h1>Tombola ({{day}})</h1>
 
 
   <label>Los-Nummer eingeben: <input autofocus #box (keyup.enter)="onEnter(box.value); box.value = ''"></label>
@@ -10,10 +10,10 @@
   <ul>
     <li *ngFor="let item of tombolaItems">
       <h3>{{item.id}}: {{item.title}}</h3>
-      <img src="assets/Bilder/{{item.image}}.JPG">
+      <img src="assets/Bilder/{{yearAndDay}}/{{item.image}}.JPG">
       <div>
-        <span *ngIf="item.showed.length > 1">Ausgegeben: {{item.showed[0] | date:'short'}}</span>
-        <span *ngIf="item.showed.length === 1">Noch da</span>
+        <span *ngIf="item.showed.length > 1">Angezeigt: {{item.showed[0] | date:'short'}}</span>
+        <span *ngIf="item.showed.length === 1">Noch nie angezeigt</span>
       </div>
     </li>
   </ul>

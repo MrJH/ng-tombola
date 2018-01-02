@@ -1,5 +1,7 @@
 # NgTombola
 
+Use http://www.csvjson.com/csv2json to convert Excel File via CSV to JSON.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
 ## Development server

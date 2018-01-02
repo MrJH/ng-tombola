@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { LOCALE_ID } from '@angular/core';
     TombolaComponent
   ],
   imports: [
+    RouterModule.forRoot([]),
     BrowserModule,
     HttpModule,
     FormsModule,
